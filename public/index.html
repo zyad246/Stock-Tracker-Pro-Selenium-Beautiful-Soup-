@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Tracker Pro</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-chart-line"></i>
+                    <h1>Stock Tracker Pro</h1>
+                </div>
+                <div class="header-actions">
+                    <button id="settingsBtn" class="btn btn-secondary">
+                        <i class="fas fa-cog"></i> Settings
+                    </button>
+                    <button id="refreshBtn" class="btn btn-primary">
+                        <i class="fas fa-sync"></i> Refresh
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon green">
+                    <i class="fas fa-arrow-up"></i>
+                </div>
+                <div class="stat-content">
+                    <h3 id="gainersCount">0</h3>
+                    <p>Gainers</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon red">
+                    <i class="fas fa-arrow-down"></i>
+                </div>
+                <div class="stat-content">
+                    <h3 id="losersCount">0</h3>
+                    <p>Losers</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon blue">
+                    <i class="fas fa-chart-bar"></i>
+                </div>
+                <div class="stat-content">
+                    <h3 id="totalStocks">0</h3>
+                    <p>Total Stocks</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon purple">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <div class="stat-content">
+                    <h3 id="lastUpdate">--:--</h3>
+                    <p>Last Update</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" placeholder="Search stocks...">
+            </div>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="gainers">Gainers</button>
+                <button class="filter-btn" data-filter="losers">Losers</button>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <table class="stock-table">
+                <thead>
+                    <tr>
+                        <th>Symbol</th>
+                        <th>Company</th>
+                        <th>Price</th>
+                        <th>Change</th>
+                        <th>Change %</th>
+                        <th>Market Cap</th>
+                        <th>Volume</th>
+                        <th>Last Updated</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="stockTableBody">
+                    <tr>
+                        <td colspan="9" style="text-align: center; padding: 40px; color: #666;">
+                            <i class="fas fa-spinner fa-spin" style="font-size: 24px; margin-bottom: 12px; display: block;"></i>
+                            Loading stock data...
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div id="loading" class="loading">
+                <div class="spinner"></div>
+                Loading stock data...
+            </div>
+        </div>
+
+        <div class="connection-status" id="connectionStatus">
+            <i class="fas fa-wifi"></i><span>Connected</span>
+        </div>
+    </div>
+
+    <div id="settingsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Settings</h2>
+                <button id="closeModal" class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="symbolsInput">Stock Symbols (one per line):</label>
+                    <textarea id="symbolsInput" rows="10"></textarea>
+                </div>
+                <div class="form-actions">
+                    <button id="cancelBtn" class="btn btn-secondary">Cancel</button>
+                    <button id="saveBtn" class="btn btn-primary">Save Changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
